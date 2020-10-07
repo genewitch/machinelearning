@@ -2,16 +2,17 @@ import math
 
 #set False for data.csv, eval.csv, testcompare.csv; set True for test.csv
 istest = False
-minnumber=2000000         #these have to be hand edited. sorry.
-maxnumber=4000000     #this too
+minnumber=3         #these have to be hand edited. sorry.
+maxnumber=1000000     #this too
 
-#this is if your test data is less digits than the eval data.
+# this is if your test data is less digits than the eval data.
 # if you train/eval on 7 digit numbers and then try to predict on 4 digit numbers sklean doesn't like
-# set the first thing to +3 in that specific circumstance
+# set extrapad to 3 in that specific circumstance.
+extrapad = 1
 if istest:
-    fill=len(str(maxnumber))
+    fill=len(str(maxnumber)) + extrapad
 else:
-    fill=len(str(maxnumber))
+    fill=len(str(maxnumber)) + extrapad
 
 # going to have to work IDs in at some point?
 id=0
@@ -60,18 +61,16 @@ for leftcolumn in range(minnumber,maxnumber+1):
     
     #stupid naive and slow primality test, but 100% accurate so who cares
     sqr = math.floor(math.sqrt(leftcolumn))
-    for loope in range(2,sqr+1):
-       if leftcolumn % loope == 0:
-          #if it's not prime and we're not testing, "0\n", otherwise "\n"
-          if not istest:
-            print("0")
-          else:
-            print()
-          boo = True
-          break
-    if not boo:
-       if not istest:
-        print("1")
-       else:
+    if not istest:
+        for loope in range(2,sqr+1):
+           if leftcolumn % loope == 0:
+              #if it's not prime and we're not testing, "0\n", otherwise "\n"
+                print("0")
+              
+                boo = True
+                break
+        if not boo:
+            print("1")
+    else:
         print()
     id = id + 1

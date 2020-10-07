@@ -2,8 +2,8 @@ import math
 
 #set False for data.csv, eval.csv, testcompare.csv; set True for test.csv
 istest = False
-minnumber=3         #these have to be hand edited. sorry.
-maxnumber=99998     #this too
+minnumber=2000000         #these have to be hand edited. sorry.
+maxnumber=4000000     #this too
 
 #this is if your test data is less digits than the eval data.
 # if you train/eval on 7 digit numbers and then try to predict on 4 digit numbers sklean doesn't like
@@ -75,6 +75,3 @@ for leftcolumn in range(minnumber,maxnumber+1):
        else:
         print()
     id = id + 1
-
-
-

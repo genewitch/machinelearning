@@ -1,0 +1,19 @@
+dataset:
+  read_data_options:
+    header: 0
+  type: csv
+  true_values: 1
+  false_values: 0
+model:
+  #algorithm: NeuralNetwork
+  #arguments: "hidden_layer_sizes=(97,53,31,11,5,)"
+  #type: classification
+  algorithm: RandomForest
+  arguments: "n_jobs=16 n_estimators=600"
+  type: regression
+  #use_cv_estimator: true
+  #cross_validate:
+  #  n_jobs: 16
+  #  verbose: 1
+target:
+- prime
